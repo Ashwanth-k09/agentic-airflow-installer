@@ -1,15 +1,22 @@
 #!/bin/bash
-echo "🚀 Agentic Airflow - Ubuntu 24.04 Compatible!"
+echo "🚀 Agentic Airflow - Ubuntu 24.04 FULLY FIXED!"
 
-# Create & activate virtualenv FIRST
+# Install system dependencies FIRST
+apt update -qq
+apt install -y python3-pip python3-venv python3-full curl
+
+# Create & activate virtual environment
+echo "📦 Creating isolated Python environment..."
 python3 -m venv agentic_env
 source agentic_env/bin/activate
 
-# Install dependencies in virtualenv
+# Upgrade pip & install Python packages
+echo "📦 Installing AI agent dependencies..."
 pip install --upgrade pip
 pip install pyautogen==0.4.0 openai colorama
 
-# Run agent
+# Run the AI agent
+echo "🤖 Launching AI Airflow installer..."
 python airflow1_agent.py
 
-echo "🎉 Airflow ready on port 8081!"
+echo "🎉 SUCCESS! Airflow ready on http://localhost:8081"
